@@ -25,7 +25,9 @@ namespace Neo4jDotNetDemo
 
             //Use an IoC container and register as a Singleton
             var url = ConfigurationManager.AppSettings["GraphDBUrl"];
-            var client = new GraphClient(new Uri(url));
+            var user = ConfigurationManager.AppSettings["GraphDBUser"];
+            var password = ConfigurationManager.AppSettings["GraphDBPassword"];
+            var client = new GraphClient(new Uri(url), user, password);
             client.Connect();
 
             GraphClient = client;
